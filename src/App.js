@@ -1,5 +1,8 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCategories } from "./services/api";
+import { Button } from "./components/Button";
+import { DIFFICULTY_ENUMERATOR } from "./constants/config";
 
 function App() {
   const [pantalla, setPantalla] = useState("inicio");
@@ -10,6 +13,14 @@ function App() {
   const [respuestasUsuario, setRespuestasUsuario] = useState([]);
   const [girando, setGirando] = useState(false);
   const [rotacion, setRotacion] = useState(0);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const categories = await getCategories();
+      console.log(categories);
+    };
+    fetchCategories();
+  }, []);
 
   // Base de preguntas por dificultad y tema
   const preguntas = {
@@ -425,6 +436,17 @@ function App() {
   const preguntaData = preguntasDelTema[preguntaActual] || null;
   const anguloSegmento = 360 / temas.length;
 
+  function difficultyButton() {
+    return DIFFICULTY_ENUMERATOR.map((dificultad) => {
+      return (
+        <Button
+          onClick={() => seleccionarDificultad(dificultad.value)}
+          label={dificultad.label}
+        />
+      );
+    });
+  }
+
   return (
     <div className="App">
       {pantalla === "inicio" && (
@@ -457,7 +479,20 @@ function App() {
               marginTop: "40px",
             }}
           >
-            <button
+            {difficultyButton()}
+            {/* <Button
+              onClick={() => seleccionarDificultad("facil")}
+              label="🟢 Fácil"
+            />
+            <Button
+              onClick={() => seleccionarDificultad("media")}
+              label="🟡 Media"
+            />
+            <Button
+              onClick={() => seleccionarDificultad("dificil")}
+              label="🔴 Difícil"
+            /> */}
+            {/* <button
               className="button"
               onClick={() => seleccionarDificultad("facil")}
               style={{ padding: "15px 35px", fontSize: "17px" }}
@@ -477,7 +512,7 @@ function App() {
               style={{ padding: "15px 35px", fontSize: "17px" }}
             >
               🔴 Difícil
-            </button>
+            </button> */}
           </div>
           <br />
           <button
