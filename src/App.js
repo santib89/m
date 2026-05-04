@@ -183,8 +183,8 @@ function App() {
     <div className="App">
       {pantalla === "inicio" && (
         <div style={{ textAlign: "center" }}>
-          <h1>🎯 Bienvenido a la Trivia</h1>
-          <p>Demuestra tus conocimientos y sube de nivel</p>
+          <h1> TRIVIA </h1>
+          <p>COMIENZA A JUGAR !</p>
           <button
             className="button"
             onClick={iniciarJuego}
@@ -194,14 +194,14 @@ function App() {
               fontSize: "18px",
             }}
           >
-            Empezar Quiz
+            JUGAR
           </button>
         </div>
       )}
 
       {pantalla === "dificultad" && (
         <div style={{ textAlign: "center" }}>
-          <h1>⚙️ Elige la Dificultad</h1>
+          <h1> Elige la Dificultad</h1>
           <div
             style={{
               display: "flex",
@@ -241,7 +241,7 @@ function App() {
 
       {pantalla === "tema" && (
         <div style={{ textAlign: "center", padding: "40px" }}>
-          <h1>🗂️ Elige un tema</h1>
+          <h1> Elige un tema</h1>
           <p>
             Selecciona la categoría que quieres jugar con la dificultad elegida.
           </p>
@@ -283,7 +283,7 @@ function App() {
                   : "pointer",
             }}
           >
-            {loadingQuestions ? "⏳ Cargando preguntas..." : "▶️ Comenzar Quiz"}
+            {loadingQuestions ? " Cargando preguntas..." : "▶ Comenzar Quiz"}
           </button>
 
           <button
@@ -330,7 +330,7 @@ function App() {
                 color: categoryColor,
               }}
             >
-              📚 {tema.toUpperCase()} | PREGUNTA {preguntaActual + 1} DE{" "}
+               {tema.toUpperCase()} | PREGUNTA {preguntaActual + 1} DE{" "}
               {totalPreguntas}
             </p>
             <div
@@ -394,7 +394,7 @@ function App() {
 
       {pantalla === "resultado" && (
         <div style={{ textAlign: "center" }}>
-          <h1>🎉 ¡Juego Terminado!</h1>
+          <h1> ¡Juego Terminado!</h1>
           <p
             style={{
               fontSize: "1.3em",
@@ -450,10 +450,10 @@ function App() {
             </p>
             <p style={{ fontSize: "1em", opacity: 0.9 }}>
               {Math.round((respuestasCorrectas / totalPreguntas) * 100) >= 80
-                ? "¡Excelente trabajo! 🌟"
+                ? "¡Excelente trabajo! "
                 : Math.round((respuestasCorrectas / totalPreguntas) * 100) >= 60
-                  ? "¡Buen intento! 👍"
-                  : "¡Sigue practicando! 💪"}
+                  ? "¡Buen intento! "
+                  : "¡Sigue practicando! "}
             </p>
           </div>
           <div
@@ -474,7 +474,7 @@ function App() {
                 fontSize: "17px",
               }}
             >
-              📋 Ver Detalles
+              Ver Detalles
             </button>
             <button
               className="button"
@@ -485,7 +485,7 @@ function App() {
                 fontSize: "17px",
               }}
             >
-              🔄 Jugar de Nuevo
+               Jugar de Nuevo
             </button>
           </div>
         </div>
@@ -501,7 +501,7 @@ function App() {
             overflowY: "auto",
           }}
         >
-          <h1>📊 Detalles de tu desempeño</h1>
+          <h1> Detalles de tu desempeño</h1>
           <p
             style={{
               fontSize: "1.2em",
@@ -640,7 +640,7 @@ function App() {
               onClick={volverAlInicio}
               style={{ padding: "15px 40px", fontSize: "17px" }}
             >
-              🏠 Inicio
+               Inicio
             </button>
           </div>
         </div>
