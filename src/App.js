@@ -212,39 +212,6 @@ function App() {
             }}
           >
             {difficultyButton()}
-            {/* <Button
-              onClick={() => seleccionarDificultad("facil")}
-              label="🟢 Fácil"
-            />
-            <Button
-              onClick={() => seleccionarDificultad("media")}
-              label="🟡 Media"
-            />
-            <Button
-              onClick={() => seleccionarDificultad("dificil")}
-              label="🔴 Difícil"
-            /> */}
-            {/* <button
-              className="button"
-              onClick={() => seleccionarDificultad("facil")}
-              style={{ padding: "15px 35px", fontSize: "17px" }}
-            >
-              🟢 Fácil
-            </button>
-            <button
-              className="button"
-              onClick={() => seleccionarDificultad("media")}
-              style={{ padding: "15px 35px", fontSize: "17px" }}
-            >
-              🟡 Media
-            </button>
-            <button
-              className="button"
-              onClick={() => seleccionarDificultad("dificil")}
-              style={{ padding: "15px 35px", fontSize: "17px" }}
-            >
-              🔴 Difícil
-            </button> */}
           </div>
           <br />
           <button
