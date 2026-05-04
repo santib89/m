@@ -26,7 +26,9 @@ function App() {
         setApiError("");
       } catch (error) {
         console.error(error);
-        setApiError("No se pudieron cargar las categorías. Intenta de nuevo más tarde.");
+        setApiError(
+          "No se pudieron cargar las categorías. Intenta de nuevo más tarde.",
+        );
       }
     };
 
@@ -51,7 +53,9 @@ function App() {
 
   const handleCategoryChange = (categoryId) => {
     setSelectedCategoryId(categoryId);
-    const selected = categories.find((category) => category.id.toString() === categoryId);
+    const selected = categories.find(
+      (category) => category.id.toString() === categoryId,
+    );
     setTema(selected?.name || "");
     setQuestions([]);
     setPreguntaActual(0);
@@ -60,8 +64,10 @@ function App() {
   };
 
   const comenzarTrivia = async () => {
-    if (!selectedCategoryId || !dificultad) return;
-
+    if (!selectedCategoryId || !dificultad) {
+      setApiError("Debes elegir categoría y dificultad");
+      return;
+    }
     setLoadingQuestions(true);
     setApiError("");
 
@@ -73,7 +79,9 @@ function App() {
       });
 
       if (!preguntas.length) {
-        setApiError("No se encontraron preguntas para esta categoría y dificultad.");
+        setApiError(
+          "No se encontraron preguntas para esta categoría y dificultad.",
+        );
         return;
       }
 
@@ -101,7 +109,8 @@ function App() {
       {
         pregunta: preguntaActualData.pregunta,
         respuestaUsuario: preguntaActualData.opciones[indiceOpcion],
-        respuestaCorrecta: preguntaActualData.opciones[preguntaActualData.correcta],
+        respuestaCorrecta:
+          preguntaActualData.opciones[preguntaActualData.correcta],
         esCorrecta,
       },
     ]);
@@ -134,7 +143,9 @@ function App() {
   };
 
   const preguntaData = questions[preguntaActual] || null;
-  const selectedCategory = categories.find((category) => category.id.toString() === selectedCategoryId);
+  const selectedCategory = categories.find(
+    (category) => category.id.toString() === selectedCategoryId,
+  );
 
   const colorPalette = [
     "#4ECDC4",
@@ -152,10 +163,9 @@ function App() {
     "#FEBF63",
   ];
 
-  const categoryColor =
-    selectedCategory
-      ? colorPalette[categories.indexOf(selectedCategory) % colorPalette.length]
-      : "#4ECDC4";
+  const categoryColor = selectedCategory
+    ? colorPalette[categories.indexOf(selectedCategory) % colorPalette.length]
+    : "#4ECDC4";
 
   const totalPreguntas = questions.length;
 
@@ -265,7 +275,9 @@ function App() {
       {pantalla === "tema" && (
         <div style={{ textAlign: "center", padding: "40px" }}>
           <h1>🗂️ Elige un tema</h1>
-          <p>Selecciona la categoría que quieres jugar con la dificultad elegida.</p>
+          <p>
+            Selecciona la categoría que quieres jugar con la dificultad elegida.
+          </p>
 
           {apiError && (
             <p style={{ color: "#ffdddd", marginTop: "10px" }}>{apiError}</p>
@@ -278,7 +290,11 @@ function App() {
               options={categories}
               value={selectedCategoryId}
               onChange={handleCategoryChange}
-              placeholder={categories.length ? "Selecciona una categoría" : "Cargando categorías..."}
+              placeholder={
+                categories.length
+                  ? "Selecciona una categoría"
+                  : "Cargando categorías..."
+              }
             />
           </div>
 
@@ -291,7 +307,10 @@ function App() {
               padding: "18px 50px",
               fontSize: "18px",
               opacity: !selectedCategoryId || loadingQuestions ? 0.6 : 1,
-              cursor: !selectedCategoryId || loadingQuestions ? "not-allowed" : "pointer",
+              cursor:
+                !selectedCategoryId || loadingQuestions
+                  ? "not-allowed"
+                  : "pointer",
             }}
           >
             {loadingQuestions ? "⏳ Cargando preguntas..." : "▶️ Comenzar Quiz"}
@@ -341,7 +360,8 @@ function App() {
                 color: categoryColor,
               }}
             >
-              📚 {tema.toUpperCase()} | PREGUNTA {preguntaActual + 1} DE {totalPreguntas}
+              📚 {tema.toUpperCase()} | PREGUNTA {preguntaActual + 1} DE{" "}
+              {totalPreguntas}
             </p>
             <div
               style={{
@@ -462,8 +482,8 @@ function App() {
               {Math.round((respuestasCorrectas / totalPreguntas) * 100) >= 80
                 ? "¡Excelente trabajo! 🌟"
                 : Math.round((respuestasCorrectas / totalPreguntas) * 100) >= 60
-                ? "¡Buen intento! 👍"
-                : "¡Sigue practicando! 💪"}
+                  ? "¡Buen intento! 👍"
+                  : "¡Sigue practicando! 💪"}
             </p>
           </div>
           <div
