@@ -4,7 +4,7 @@ import { getCategories, getQuestions } from "./services/api";
 import { Button } from "./components/Button";
 import { OptionBox } from "./components/OptionBox";
 import { DIFFICULTY_ENUMERATOR } from "./constants/config";
-
+import { Timer } from "./components/Timer";
 function App() {
   const [pantalla, setPantalla] = useState("inicio");
   const [dificultad, setDificultad] = useState("");
@@ -320,6 +320,7 @@ function App() {
             maxWidth: "700px",
           }}
         >
+          <Timer isRunning={pantalla === "trivia"} />
           <div style={{ marginBottom: "30px" }}>
             <p
               style={{
