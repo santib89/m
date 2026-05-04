@@ -15,8 +15,8 @@
   width: 100%;
   padding: 14px 16px;
   border-radius: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.85);
   color: #ffffff;
   font-size: 1rem;
   outline: none;
@@ -25,10 +25,11 @@
 
 .option-box-select:hover,
 .option-box-select:focus {
-  border-color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.75);
   transform: translateY(-1px);
 }
 
 .option-box-select option {
-  color: #000000;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.9);
 }
