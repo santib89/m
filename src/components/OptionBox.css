@@ -6,7 +6,7 @@
 }
 
 .option-box-label {
-  color: #ffffff;
+  color: #333; /* 🔥 texto oscuro */
   font-weight: 700;
   font-size: 1rem;
 }
@@ -15,14 +15,14 @@
   width: 100%;
   padding: 14px 16px;
   border-radius: 14px;
-  border: 2px solid rgba(0, 0, 0, 0.35);
-  background: rgba(0, 0, 0, 0.85);
-  color: #ffffff;
+
+  background: white; /* 🔥 fondo claro */
+  color: black; /* 🔥 texto oscuro */
+  border: 2px solid #4ecdc4; /* 🔥 borde visible */
+
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
 }
-
 .option-box-select:hover,
 .option-box-select:focus {
   border-color: rgba(0, 0, 0, 0.75);

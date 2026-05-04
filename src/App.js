@@ -285,7 +285,10 @@ function App() {
 
           <div style={{ maxWidth: "450px", margin: "40px auto" }}>
             <OptionBox
-              style={{ backgroundColor: "rgba(44, 39, 39, 0.2)", border: "2px solid rgba(255, 255, 255, 0.3)" }}
+              style={{
+                backgroundColor: "rgba(44, 39, 39, 0.2)",
+                border: "2px solid rgba(255, 255, 255, 0.3)",
+              }}
               label="Categoría"
               options={categories}
               value={selectedCategoryId}

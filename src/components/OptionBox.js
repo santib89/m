@@ -1,6 +1,12 @@
 import "./OptionBox.css";
 
-export function OptionBox({ label, options, value, onChange, placeholder = "Selecciona una opción" }) {
+export function OptionBox({
+  label,
+  options,
+  value,
+  onChange,
+  placeholder = "Selecciona una opción",
+}) {
   const normalizedOptions = options.map((option) => {
     if (typeof option === "string") {
       return { id: option, name: option };
