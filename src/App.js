@@ -17,6 +17,7 @@ function App() {
   const [respuestasUsuario, setRespuestasUsuario] = useState([]);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [apiError, setApiError] = useState("");
+  const [tiempoTotal, setTiempoTotal] = useState(0);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -320,7 +321,10 @@ function App() {
             maxWidth: "700px",
           }}
         >
-          <Timer isRunning={pantalla === "trivia"} />
+          <Timer
+            isRunning={pantalla === "trivia"}
+            onTimeUpdate={setTiempoTotal}
+          />
           <div style={{ marginBottom: "30px" }}>
             <p
               style={{
@@ -407,6 +411,33 @@ function App() {
           >
             Tema: {tema}
           </p>
+          <div
+            style={{
+              margin: "25px auto",
+              padding: "15px 25px",
+              display: "inline-block",
+              borderRadius: "15px",
+              background: "rgba(118, 75, 162, 0.15)",
+              border: "2px solid rgba(118, 75, 162, 0.4)",
+              boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+              backdropFilter: "blur(6px)",
+            }}
+          >
+            <p style={{ fontSize: "1.1em", margin: 0, opacity: 0.8 }}>
+              ⏱️ Tiempo total
+            </p>
+
+            <p
+              style={{
+                fontSize: "2em",
+                fontWeight: "700",
+                margin: "5px 0 0 0",
+                color: "#fdfaff",
+              }}
+            >
+              {Math.floor(tiempoTotal / 60)}m {tiempoTotal % 60}s
+            </p>
+          </div>
           <div
             style={{
               margin: "40px 0",
