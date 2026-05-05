@@ -1,13 +1,116 @@
+
 .App {
+  /* Gradiente  */
+  background: linear-gradient(-45deg, #395ce7, #16c6f1, #ff36de, #a40bd3);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  /* Color de texto  */
   color: #ffffff;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
+}
+div[style*="textAlign: center"], 
+div[style*="padding: 40px"] {
+  /* Efecto cristal  para que se vea el fondo animado detrás */
+  background: rgba(255, 255, 255, 0.1) !important; 
+  backdrop-filter: blur(10px); 
+  
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco */
+  
+  max-width: 600px;
+  margin: 0 auto;
+  animation: slideUp 0.6s ease;
+  
+  /*  texto a blanco  */
+  color: #ffffff !important; 
+}
+
+/* --- Ajustes de color para títulos y párrafos específicos --- */
+
+div[style*="textAlign: center"] h1,
+div[style*="padding: 40px"] h1 {
+  color: #ffffff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* sombra para resaltar */
+}
+
+div[style*="textAlign: center"] h2,
+div[style*="padding: 40px"] h2,
+div[style*="padding: 40px"] p {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/*  mensaje de "COMIENZA A JUGAR", resaltado */
+div[style*="textAlign: center"] p {
+  color: #e3f2fd !important; 
+  opacity: 0.9;
+}
+
+/* --- Botones --- */
+.button, 
+button[style*="display: block"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: auto; 
+}
+
+/* Ajuste específico para los botones de opción (multiple choice) */
+button[style*="display: block"] {
+  display: block;
+  width: 100%; /* Ocupar todo el ancho disponible */
+  margin: 12px 0;
+  padding: 18px 25px;
+  border-radius: 12px;
+}
+
+/* Efectos Hover */
+.button:hover,
+button[style*="display: block"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* El efecto translateX lo dejamos solo para las opciones de respuesta */
+button[style*="display: block"]:hover {
+  transform: translateX(10px);
+}
+
+/* --- Animaciones (se mantienen igual, solo añadimos la del gradiente) --- */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .button {

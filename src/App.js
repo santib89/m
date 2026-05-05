@@ -424,7 +424,7 @@ function App() {
             }}
           >
             <p style={{ fontSize: "1.1em", margin: 0, opacity: 0.8 }}>
-              ⏱️ Tiempo total
+              ⏱ Tiempo total
             </p>
 
             <p
