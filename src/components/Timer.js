@@ -18,7 +18,7 @@ export function Timer({ isRunning, resetKey, onTimeUpdate }) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, onTimeUpdate]);
 
   // reset cuando cambia pregunta
   useEffect(() => {
