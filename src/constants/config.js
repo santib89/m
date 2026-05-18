@@ -1,9 +1,9 @@
 export const API_BASE_URL = "https://opentdb.com/api.php";
 //dificultad cantidad de preguntas y tipo de preguntas
 export const DIFFICULTY_ENUMERATOR = [
-  { label: "EASY", value: "easy" },
-  { label: "MEDIUM", value: "medium" },
-  { label: "HARD", value: "hard" },
+  { label: "FÁCIL", value: "easy" },
+  { label: "MEDIA", value: "medium" },
+  { label: "DIFÍCIL", value: "hard" },
 ];
 
 export const TYPE_QUESTION = "multiple";
@@ -19,9 +19,11 @@ export const SCREEN_KEYS = {
 export const ANSWER_FEEDBACK_DELAY_MS = 700;
 export const BUTTON_LABELS = {
   PLAY: "JUGAR",
-  START_QUIZ: "▶ Comenzar Quiz",
+  START_QUIZ: "▶ Comenzar Trivia",
   BACK: "← Volver",
   NEW_GAME: "Jugar de Nuevo",
+  RESTART: "Reiniciar",
+  EXIT: "Salir",
 };
 export const ERROR_MESSAGES = {
   CATEGORY_LOAD:

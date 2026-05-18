@@ -57,7 +57,7 @@ export function Trivia({
         {preguntaData.opciones.map((opcion, i) => {
           const isSelected = selected === i;
           const isCorrect = preguntaData.correcta === i;
-          const className = `option-button ${isSelected && isCorrect ? "correct" : ""} ${isSelected && !isCorrect ? "incorrect" : ""}`;
+          const className = `option-button ${isCorrect && (locked || isSelected) ? "correct" : ""} ${isSelected && !isCorrect ? "incorrect" : ""}`;
 
           return (
             <button

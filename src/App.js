@@ -1,17 +1,16 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { getCategories, getQuestions } from "./services/api";
-import { Button } from "./components/Button";
-import { OptionBox } from "./components/OptionBox";
 import {
-  DIFFICULTY_ENUMERATOR,
   DEFAULT_QUESTION_COUNT,
   SCREEN_KEYS,
   ERROR_MESSAGES,
-  BUTTON_LABELS,
   COLOR_PALETTE,
-  RESULTS_TEXT,
 } from "./constants/config";
+import { StartScreen } from "./components/screens/StartScreen";
+import { DifficultyScreen } from "./components/screens/DifficultyScreen";
+import { ThemeScreen } from "./components/screens/ThemeScreen";
+import { ResultScreen } from "./components/screens/ResultScreen";
 import { Trivia } from "./components/screens/Trivia";
 
 const initialState = {
@@ -128,65 +127,33 @@ function App() {
   const volverAlInicio = () =>
     setState((prev) => ({ ...initialState, categories: prev.categories }));
 
+  const reiniciarTrivia = () =>
+    update({
+      preguntaActual: 0,
+      respuestasCorrectas: 0,
+      tiempoTotal: 0,
+      pantalla: SCREEN_KEYS.TRIVIA,
+    });
+
   const screen = {
-    [SCREEN_KEYS.INICIO]: (
-      <section className="screen-center">
-        <h1>TRIVIA</h1>
-        <p>Comienza a jugar</p>
-        <button className="button button-large" onClick={iniciarJuego}>
-          {BUTTON_LABELS.PLAY}
-        </button>
-      </section>
-    ),
+    [SCREEN_KEYS.INICIO]: <StartScreen onPlay={iniciarJuego} />,
     [SCREEN_KEYS.DIFICULTAD]: (
-      <section className="screen-center">
-        <h1>Elige la dificultad</h1>
-        <div className="difficulty-grid">
-          {DIFFICULTY_ENUMERATOR.map(({ value, label }) => (
-            <Button
-              key={value}
-              onClick={() => seleccionarDificultad(value)}
-              label={label}
-            />
-          ))}
-        </div>
-        <button className="ghost-button" onClick={volverAlInicio}>
-          {BUTTON_LABELS.BACK}
-        </button>
-      </section>
+      <DifficultyScreen
+        onSelectDifficulty={seleccionarDificultad}
+        onBack={volverAlInicio}
+      />
     ),
     [SCREEN_KEYS.TEMA]: (
-      <section className="screen-padding">
-        <h1>Elige un tema</h1>
-        <p>Selecciona la categoría para la trivia.</p>
-        {apiError && <p className="api-error">{apiError}</p>}
-        <OptionBox
-          label="Categoría"
-          options={categories}
-          value={selectedCategoryId}
-          onChange={handleCategoryChange}
-          placeholder={
-            categories.length
-              ? "Selecciona una categoría"
-              : "Cargando categorías..."
-          }
-        />
-        <button
-          className={`button ${disabled ? "button--disabled" : ""}`}
-          onClick={comenzarTrivia}
-          disabled={disabled}
-        >
-          {loadingQuestions
-            ? "Cargando preguntas..."
-            : BUTTON_LABELS.START_QUIZ}
-        </button>
-        <button
-          className="ghost-button"
-          onClick={() => update({ pantalla: SCREEN_KEYS.DIFICULTAD })}
-        >
-          {BUTTON_LABELS.BACK}
-        </button>
-      </section>
+      <ThemeScreen
+        categories={categories}
+        selectedCategoryId={selectedCategoryId}
+        onCategoryChange={handleCategoryChange}
+        onStartTrivia={comenzarTrivia}
+        loadingQuestions={loadingQuestions}
+        disabled={disabled}
+        apiError={apiError}
+        onBack={() => update({ pantalla: SCREEN_KEYS.DIFICULTAD })}
+      />
     ),
     [SCREEN_KEYS.TRIVIA]: preguntaData ? (
       <Trivia
@@ -201,39 +168,15 @@ function App() {
       />
     ) : null,
     [SCREEN_KEYS.RESULTADO]: (
-      <section className="screen-center">
-        <h1>¡Juego terminado!</h1>
-        <p className="tema" style={{ color: categoryColor }}>
-          Tema: {tema}
-        </p>
-        <div className="time-box">
-          <p className="muted">⏱ Tiempo total</p>
-          <p className="time-value">
-            {Math.floor(tiempoTotal / 60)}m {tiempoTotal % 60}s
-          </p>
-        </div>
-        <div className="score-box">
-          <p className="score-value">
-            {respuestasCorrectas}/{questions.length}
-          </p>
-          <p className="muted">respuestas correctas</p>
-        </div>
-        <div className="percent-box">
-          <p className="percent-value">
-            {Math.round((respuestasCorrectas / questions.length) * 100)}%
-          </p>
-          <p className="muted">
-            {respuestasCorrectas / questions.length >= 0.8
-              ? RESULTS_TEXT.EXCELLENT
-              : respuestasCorrectas / questions.length >= 0.6
-                ? RESULTS_TEXT.GOOD
-                : RESULTS_TEXT.PRACTICE}
-          </p>
-        </div>
-        <button className="button" onClick={volverAlInicio}>
-          {BUTTON_LABELS.NEW_GAME}
-        </button>
-      </section>
+      <ResultScreen
+        categoryColor={categoryColor}
+        tema={tema}
+        tiempoTotal={tiempoTotal}
+        respuestasCorrectas={respuestasCorrectas}
+        totalQuestions={questions.length}
+        onRestart={reiniciarTrivia}
+        onExit={volverAlInicio}
+      />
     ),
   };
 

@@ -16,101 +16,42 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
 }
-div[style*="textAlign: center"], 
-div[style*="padding: 40px"] {
-  /* Efecto cristal  para que se vea el fondo animado detrás */
-  background: rgba(255, 255, 255, 0.1) !important; 
-  backdrop-filter: blur(10px); 
-  
+.screen-panel {
+  background: rgba(255, 255, 255, 0.95);
   padding: 60px 40px;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco */
-  
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   max-width: 600px;
   margin: 0 auto;
   animation: slideUp 0.6s ease;
-  
-  /*  texto a blanco  */
-  color: #ffffff !important; 
+  color: #333;
 }
 
-/* --- Ajustes de color para títulos y párrafos específicos --- */
-
-div[style*="textAlign: center"] h1,
-div[style*="padding: 40px"] h1 {
-  color: #ffffff !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* sombra para resaltar */
+.screen-center {
+  text-align: center;
 }
 
-div[style*="textAlign: center"] h2,
-div[style*="padding: 40px"] h2,
-div[style*="padding: 40px"] p {
-  color: #ffffff !important;
+.screen-padding {
+  text-align: center;
+}
+
+.screen-panel h1,
+.screen-panel h2,
+.screen-panel p {
+  animation: fadeIn 0.6s ease 0.2s backwards;
+}
+
+.screen-panel h1 {
+  color: #667eea;
+}
+
+.screen-panel h2 {
+  color: #764ba2;
+}
+
+.screen-panel p {
+  color: #667eea;
   font-weight: 600;
-}
-
-/*  mensaje de "COMIENZA A JUGAR", resaltado */
-div[style*="textAlign: center"] p {
-  color: #e3f2fd !important; 
-  opacity: 0.9;
-}
-
-/* --- Botones --- */
-.button, 
-button[style*="display: block"] {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 16px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  width: auto; 
-}
-
-/* Ajuste específico para los botones de opción (multiple choice) */
-button[style*="display: block"] {
-  display: block;
-  width: 100%; /* Ocupar todo el ancho disponible */
-  margin: 12px 0;
-  padding: 18px 25px;
-  border-radius: 12px;
-}
-
-/* Efectos Hover */
-.button:hover,
-button[style*="display: block"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-}
-
-/* El efecto translateX lo dejamos solo para las opciones de respuesta */
-button[style*="display: block"]:hover {
-  transform: translateX(10px);
-}
-
-/* --- Animaciones (se mantienen igual, solo añadimos la del gradiente) --- */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .button {
@@ -139,87 +80,22 @@ button[style*="display: block"]:hover {
   box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
 }
 
-h1 {
-  font-size: 3em;
-  font-weight: 700;
-  margin: 20px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  animation: fadeInDown 0.6s ease;
+.button-large {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 18px;
 }
 
-h2 {
-  font-size: 1.8em;
-  margin-bottom: 30px;
-  font-weight: 600;
-  animation: fadeInDown 0.6s ease 0.1s backwards;
-}
-
-p {
-  font-size: 1.2em;
-  margin: 15px 0;
-  animation: fadeIn 0.6s ease 0.2s backwards;
-}
-
-div[style*="textAlign: center"] {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 60px 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
-  animation: slideUp 0.6s ease;
-  color: #333;
-}
-
-div[style*="textAlign: center"] h1 {
-  color: #667eea;
-}
-
-div[style*="textAlign: center"] h2 {
-  color: #764ba2;
-}
-
-div[style*="padding: 40px"] {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  margin: 0 auto;
-  animation: slideUp 0.6s ease;
-  color: #333;
-}
-
-div[style*="padding: 40px"] p {
-  color: #667eea;
-  font-weight: 600;
-}
-
-div[style*="padding: 40px"] h2 {
-  color: #764ba2;
-  margin-top: 20px;
-}
-
-button[style*="display: block"] {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 18px 25px;
-  margin: 12px 0;
-  font-size: 1.1em;
-  cursor: pointer;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  width: calc(100% - 50px);
-}
-
-button[style*="display: block"]:hover {
-  transform: translateX(10px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-}
-
-button[style*="display: block"]:active {
-  transform: translateX(5px);
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes fadeInDown {
@@ -257,10 +133,6 @@ button[style*="display: block"]:active {
   0%, 100% {
     transform: scale(1);
     box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6);
   }
 }
 
